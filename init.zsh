@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-fpath=(
-"${${(%):-%N}:A:h}"/autoload(N-/)
-$fpath
-)
+fpath=("${${(%):-%N}:A:h}"/bin(N-/) $fpath)
 
-autoload -Uz zsh_plugin
+autoload -Uz fzf-history && fzf-history
+
+zle -N fzf-history
+bindkey "^R" fzf-history

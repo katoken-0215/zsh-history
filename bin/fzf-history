@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+function history-all {
+	history -n 1 5000
+}
+
+function fzf-history {
+	zle -I
+	echo $BUFFER
+	eval $(history-all | fzf --tac --no-sort -q "$BUFFER")
+}
